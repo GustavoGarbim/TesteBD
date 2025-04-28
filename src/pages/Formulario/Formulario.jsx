@@ -14,7 +14,7 @@ function Formulario() {
     // Buscar posts do servidor
     const fetchPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/posts');
+            const response = await axios.get('https://testebd-production.up.railway.app');
             setPosts(response.data);
         } catch (error) {
             console.error('Erro ao buscar os posts:', error);
@@ -39,7 +39,7 @@ function Formulario() {
         };
 
         try {
-            await axios.post('http://localhost:8000/posts', novoPost);
+            await axios.post('https://testebd-production.up.railway.app', novoPost);
             alert('Post criado com sucesso!');
             setTipo('');
             setArea('');
