@@ -1,0 +1,210 @@
+.section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    & .container_formulario {
+        position: relative;
+        width: 25%;
+        height: 700px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        margin: 15% 10% 0px;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    & h2 {
+        font-weight: 700;
+        font-size: 28px;
+        font-style: italic;
+    }
+
+    & form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        & label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        & select {
+            margin-top: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #001c41;
+        }
+
+        & textarea {
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #001c41;
+        }
+
+        & .descricao_label {
+            margin-top: 40px;
+        }
+
+        & .descricao {
+            height: 150px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #001c41;
+        }
+
+        & input {
+            width: 180px;
+            margin: 0 auto;
+            margin-top: 20px;
+            height: 35px;
+            border-radius: 10px;
+            border: none;
+            background-color: #001c41;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    & .form_login {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    & p a {
+        font-weight: 800;
+    }
+}
+
+.posts {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 5%;
+
+    & .titulo_posts {
+        color: #fff;
+        font-size: 28px;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    & .posts_props {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    & .comentarios {
+        position: relative;
+        width: 65%;
+        height: 220px;
+        background-color: #fff;
+        margin-top: 30px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+        padding: 10px 2%;
+
+        & .container_com {
+            display: flex;
+
+            & p {
+                position: absolute;
+                left: 75%;
+                color: #8000ff;
+            }
+        }
+
+        & .ajuda {
+            position: relative;
+            width: 25%;
+            border-radius: 20px;
+            height: 30px;
+            background-color: #0048A7;
+            text-align: center;
+            color: #fff;
+            line-height: 28px;
+            font-weight: 600;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        & .oferta {
+            position: relative;
+            width: 25%;
+            border-radius: 20px;
+            height: 30px;
+            background-color: #07838B;
+            text-align: center;
+            color: #fff;
+            line-height: 28px;
+            font-weight: 600;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        & .dev {
+            position: relative;
+            width: 25%;
+            border-radius: 20px;
+            height: 30px;
+            background-color: #d9d9d9;
+            text-align: center;
+            color: #000;
+            line-height: 28px;
+            margin-left: 10px;
+            font-weight: 600;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        & .resposta {
+            position: absolute;
+            left: 78%;
+            bottom: 5%;
+            color: #8000ff;
+        }
+    }
+
+    & .texto_comentarios {
+        font-weight: 600;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    & .paragrafo_comentarios {
+        margin-top: 5px;
+    }
+
+    & .users {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        & img {
+            width: 50px;
+            height: 50px;
+            margin-top: 25px;
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        & p {
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+    }
+}

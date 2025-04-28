@@ -1,0 +1,7 @@
+.fundo{
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background-image: linear-gradient(160deg, #001c41, #000, #040c31);
+}
