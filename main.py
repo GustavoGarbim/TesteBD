@@ -1,12 +1,11 @@
 import os
 import platform
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pymongo import MongoClient
 from typing import List
 from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
-from bson import ObjectId
 
 def limpar_console():
     if platform.system() == "Windows":
@@ -14,12 +13,13 @@ def limpar_console():
     else:
         os.system("clear")
 
-limpar_console()
 
 uri = "mongodb+srv://gustavogarbim0:oIi8L6SUwpS5lmEy@uc3.nhjgasy.mongodb.net/?retryWrites=true&w=majority&appName=UC3"
 client = MongoClient(uri)
 db = client['forum']
 posts_collection = db['posts']
+
+limpar_console()
 
 try:
     client.admin.command('ping')
@@ -59,18 +59,17 @@ class Post(BaseModel):
 
 @app.post("/posts")
 def criar_post(post: Post):
-
     try:
-        posts_collection.insert_one(post.dict())
-        return {"mensagem": "Post criado com sucesso!"}
-    
+        result = posts_collection.insert_one(post.dict())
+        if result.inserted_id:
+            return {"mensagem": "Post criado com sucesso!"}
+        else:
+            raise HTTPException(status_code=500, detail="Erro ao inserir o post no banco de dados.")
     except Exception as e:
-        return {"erro": f"Não deu pra criar o post: {e}"}
-
+        raise HTTPException(status_code=500, detail=f"Não deu pra criar o post: {e}")
 
 @app.get("/posts", response_model=List[Post])
 def listar_posts():
-    
     try:
         posts = []
         for p in posts_collection.find():
@@ -83,8 +82,5 @@ def listar_posts():
                 data_publicacao=p.get('data_publicacao', datetime.now().strftime("%Y-%m-%d")),
             ))
         return posts
-    
     except Exception as e:
-        print("Erro ao listar posts:", e)
-        
-        return []
+        raise HTTPException(status_code=500, detail=f"Erro ao listar posts: {e}")

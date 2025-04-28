@@ -10,6 +10,7 @@ function Formulario() {
     const [area, setArea] = useState('');
     const [titulo, setTitulo] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [erro, setErro] = useState(''); // Estado para mensagem de erro ou sucesso
 
     // Buscar posts do servidor
     const fetchPosts = async () => {
@@ -18,6 +19,7 @@ function Formulario() {
             setPosts(response.data);
         } catch (error) {
             console.error('Erro ao buscar os posts:', error);
+            setErro('Erro ao carregar os posts.');
         }
     };
 
@@ -39,16 +41,17 @@ function Formulario() {
         };
 
         try {
-            await axios.post('http://localhost:8000/posts', novoPost);
+            const response = await axios.post('http://localhost:8000/posts', novoPost);
             alert('Post criado com sucesso!');
             setTipo('');
             setArea('');
             setTitulo('');
             setDescricao('');
             fetchPosts();
+            setErro(''); // Limpar mensagens de erro
         } catch (error) {
             console.error('Erro ao enviar post:', error);
-            alert('Erro ao enviar post.');
+            setErro('Erro ao enviar post.');
         }
     };
 
@@ -92,6 +95,7 @@ function Formulario() {
                     <input type="submit" value="Publicar" />
                     <p className={Styles.form_login}>Faça <a href="#">LOGIN</a> para publicar</p>
                 </form>
+                {erro && <p className={Styles.erro}>{erro}</p>} {/* Exibindo erro, se houver */}
             </div>
 
             <div className={Styles.posts}>
