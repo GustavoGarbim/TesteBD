@@ -81,7 +81,6 @@ def listar_posts():
                 descricao=p.get('descricao', ''),
                 nome=p.get('nome', 'Novo usuário'),
                 data_publicacao=p.get('data_publicacao', datetime.now().strftime("%Y-%m-%d")),
-                _id=ObjectId(p.get('_id'))
             ))
         return posts
     
